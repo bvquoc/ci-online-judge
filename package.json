@@ -16,5 +16,7 @@
     "url": "https://github.com/bvquoc/ci-online-judge/issues"
   },
   "homepage": "https://github.com/bvquoc/ci-online-judge#readme",
-  "dependencies": {}
+  "dependencies": {
+    "query-string": "^7.0.1"
+  }
 }
