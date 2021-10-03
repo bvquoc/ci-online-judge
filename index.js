@@ -1,3 +1,4 @@
+import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
 import { Login } from './components/login.js';
 
@@ -19,6 +20,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     const $container = document.createElement('div');
     const $hello = document.createElement('h2');
     $hello.textContent = `Hello ${email}`;
+    $container.appendChild(new Header().$container);
     $container.appendChild($hello);
     setScreen($container);
   } else {
