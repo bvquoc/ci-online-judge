@@ -1,0 +1,22 @@
+{
+  "name": "ci-online-judge",
+  "version": "1.0.0",
+  "description": "An online-judge project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvquoc/ci-online-judge.git"
+  },
+  "author": "bvquoc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bvquoc/ci-online-judge/issues"
+  },
+  "homepage": "https://github.com/bvquoc/ci-online-judge#readme",
+  "dependencies": {
+    "axios": "^0.22.0"
+  }
+}
