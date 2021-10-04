@@ -8,12 +8,6 @@ class HomePage {
   $footer = new Footer();
 
   constructor() {
-    {
-      // MAIN
-    }
-    {
-      // FOOTER
-    }
     this.$container.appendChild(this.$header.$container);
     this.$container.appendChild(this.$main);
     this.$container.appendChild(this.$footer.$container);
