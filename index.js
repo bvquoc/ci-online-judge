@@ -14,14 +14,14 @@ function setScreen($container) {
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
-    const username = user.username;
+    const username = user.displayName;
     const email = user.email;
     const uid = user.uid;
-    console.log(username, email, uid);
+    console.log(uid);
 
     const $container = document.createElement('div');
-    const $hello = document.createElement('h2');
-    $hello.textContent = `Hello ${email}`;
+    const $hello = document.createElement('h3');
+    $hello.textContent = `Hello ${username} ${email}`;
     $container.appendChild(new Header().$container);
     $container.appendChild($hello);
     setScreen($container);

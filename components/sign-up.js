@@ -8,7 +8,7 @@ class SignUp {
   $form = document.createElement('form');
   $txtTitle = document.createElement('h3');
   $inputGroupEmail = new InputGroup('Email', 'email');
-  $inputGroupDisplayName = new InputGroup('Display Name');
+  $inputGroupDisplayName = new InputGroup('Username');
   $inputGroupPassword = new InputGroup('Password', 'password');
   $inputGroupConfirmPassword = new InputGroup('Confirm Password', 'password');
 
@@ -75,8 +75,8 @@ class SignUp {
       .then(() => {
         const user = firebase.auth().currentUser;
         user.updateProfile({ displayName });
+        swal('Completed!', 'Email verification sent!', 'success');
         firebase.auth().currentUser.sendEmailVerification();
-        alert('Completed! Email verification sent!');
       })
       .catch((error) => {
         console.log('Error code:', error.code);
