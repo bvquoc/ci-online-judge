@@ -1,7 +1,7 @@
 function createSubmission(data) {
   firebase
     .firestore()
-    .collection('submissons')
+    .collection('submissions')
     .add({
       ...data,
       userId: firebase.auth().currentUser.uid,
