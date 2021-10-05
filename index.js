@@ -3,6 +3,7 @@ import { submissionApi } from './api/submission-api.js';
 import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
 import { Login } from './components/login.js';
+import { SubmitForm } from './components/submit-form.js';
 import { createSubmission } from './submission/create-submission.js';
 
 const app = document.getElementById('app');
@@ -27,24 +28,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     $container.appendChild($hello);
     setScreen($container);
 
-    const $submitForm = document.getElementById('submit-form');
-
-    const handleSubmitCode = (e) => {
-      e.preventDefault();
-      const language = $submitForm.querySelector('div #submit-language').value;
-      const code = $submitForm.querySelector('div #submit-code').value;
-      const problemId = $submitForm.querySelector('div #submit-problem').value;
-
-      if (!language || !code || !problemId) {
-        swal('Warning', 'Fill the input before submit', 'warning');
-        return;
-      }
-      console.log('submit', { language, code, problemId });
-      swal('Submited', 'Your code is judging...', 'success');
-      createSubmission({ language, code, problemId });
-    };
-
-    $submitForm.onsubmit = handleSubmitCode;
+    $container.appendChild(new SubmitForm().$container); // submit form
   } else {
     const homePage = new HomePage();
     setScreen(homePage.$container);
