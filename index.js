@@ -3,6 +3,7 @@ import { submissionApi } from './api/submission-api.js';
 import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
 import { Login } from './components/login.js';
+import { createSubmission } from './submission/create-submission.js';
 
 const app = document.getElementById('app');
 
@@ -26,17 +27,24 @@ firebase.auth().onAuthStateChanged(function (user) {
     $container.appendChild($hello);
     setScreen($container);
 
-    (async function testAPI() {
-      const data = {
-        source_code: '#include <stdio.h>\n\nint main(void) {\n printf("hello");\n  return 0;\n}',
-        language_id: 54,
-        stdin: 'world',
-      };
+    const $submitForm = document.getElementById('submit-form');
 
-      // const submission = await submissionApi.create(data);
-      // const status = await submissionApi.get(submission.token);
-      // console.log(status);
-    })();
+    const handleSubmitCode = (e) => {
+      e.preventDefault();
+      const language = $submitForm.querySelector('div #submit-language').value;
+      const code = $submitForm.querySelector('div #submit-code').value;
+      const problemId = $submitForm.querySelector('div #submit-problem').value;
+
+      if (!language || !code || !problemId) {
+        swal('Warning', 'Fill the input before submit', 'warning');
+        return;
+      }
+      console.log('submit', { language, code, problemId });
+      swal('Submited', 'Your code is judging...', 'success');
+      createSubmission({ language, code, problemId });
+    };
+
+    $submitForm.onsubmit = handleSubmitCode;
   } else {
     const homePage = new HomePage();
     setScreen(homePage.$container);
