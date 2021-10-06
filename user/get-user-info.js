@@ -1,11 +1,16 @@
 const db = firebase.firestore();
 
-function getUserInfo(id, doAfterGet) {
-  if (!id || !doAfterGet) return;
+/**
+ * Get user info in 'user' collection by id
+ * @param {string} id of the user
+ * @param {Function} callbackFn the param of function is user's data
+ */
+function getUserInfo(id, callbackFn) {
+  if (!id || !callbackFn) return;
   db.collection('users')
     .doc(id)
     .get()
-    .then((doc) => doAfterGet(doc.data()))
+    .then((doc) => callbackFn(doc.data()))
     .catch((err) => console.log(err));
 }
 
