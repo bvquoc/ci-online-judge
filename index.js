@@ -3,8 +3,12 @@ import { submissionApi } from './api/submission-api.js';
 import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
 import { Login } from './components/login.js';
+import { SubmissionItem } from './components/submission/submisstion-item.js';
 import { SubmitForm } from './components/submit-form.js';
 import { createSubmission } from './submission/create-submission.js';
+import { getSubmission } from './submission/get-submission.js';
+import { getUserInfo } from './user/get-user-info.js';
+import { updateUserById } from './user/update-user-data.js';
 
 const app = document.getElementById('app');
 
@@ -28,7 +32,38 @@ firebase.auth().onAuthStateChanged(function (user) {
     $container.appendChild($hello);
     setScreen($container);
 
-    $container.appendChild(new SubmitForm().$container); // submit form
+    (function show_submit_form() {
+      // submit form
+      const $div = document.createElement('div');
+      const $h4 = document.createElement('h4');
+      $h4.textContent = 'Submit form here:';
+      $div.appendChild($h4);
+      $div.appendChild(new SubmitForm().$container);
+      $container.appendChild($div);
+    })();
+
+    (function show_some_submission() {
+      const $ul = document.createElement('ul');
+      const $div = document.createElement('div');
+      const $h4 = document.createElement('h4');
+      $h4.textContent = 'Some submission here:';
+      $container.appendChild($div);
+      $div.appendChild($h4);
+      $div.appendChild($ul);
+
+      getSubmission('pE31etfX1uDDvi9iagMe', (data) => {
+        $ul.appendChild(new SubmissionItem(data).$container);
+      });
+      getSubmission('pXLYEKCu4HWV2tKXydXC', (data) => {
+        $ul.appendChild(new SubmissionItem(data).$container);
+      });
+      getSubmission('hpkIAieaXWGB0O7ydFwD', (data) => {
+        $ul.appendChild(new SubmissionItem(data).$container);
+      });
+      getSubmission('uD6pVH2PvqbXBvjSDAkR', (data) => {
+        $ul.appendChild(new SubmissionItem(data).$container);
+      });
+    })();
   } else {
     const homePage = new HomePage();
     setScreen(homePage.$container);
