@@ -5,6 +5,7 @@ function createSubmission(data) {
     .add({
       ...data,
       userId,
+      displayName: firebase.auth().currentUser.displayName,
       status: 'pending',
       sentAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
