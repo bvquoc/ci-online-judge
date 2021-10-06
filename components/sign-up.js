@@ -83,7 +83,7 @@ class SignUp {
           .set({
             displayName,
             email,
-            submissions: {},
+            submissions: [],
             problems: {},
           })
           .then(() => console.log('Document successfully written!'))
