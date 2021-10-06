@@ -1,16 +1,16 @@
-import { languageApi } from './api/language-api.js';
-import { submissionApi } from './api/submission-api.js';
+// import { languageApi } from './judge0-api/language-api.js';
+// import { submissionApi } from './judge0-api/submission-api.js';
+// import { Login } from './components/login.js';
+// import { SubmissionItem } from './components/submission/submission-item.js';
+// import { createSubmission } from './submission/create-submission.js';
+// import { getSubmission } from './submission/get-submission.js';
+// import { getUserInfo } from './user/get-user-info.js';
+// import { updateUserById } from './user/update-user-data.js';
 import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
-import { Login } from './components/login.js';
-import { SubmissionItem } from './components/submission/submission-item.js';
 import { SubmissionList } from './components/submission/submission-list.js';
 import { SubmitForm } from './components/submit-form.js';
-import { createSubmission } from './submission/create-submission.js';
 import { getAllSubmission } from './submission/get-all-submission.js';
-import { getSubmission } from './submission/get-submission.js';
-import { getUserInfo } from './user/get-user-info.js';
-import { updateUserById } from './user/update-user-data.js';
 
 const app = document.getElementById('app');
 
