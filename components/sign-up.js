@@ -75,6 +75,19 @@ class SignUp {
       .then(() => {
         const user = firebase.auth().currentUser;
         user.updateProfile({ displayName });
+
+        firebase
+          .firestore()
+          .collection('users')
+          .doc(user.uid)
+          .set({
+            displayName,
+            email,
+            submissions: [],
+          })
+          .then(() => console.log('Document successfully written!'))
+          .catch((error) => console.error('Error writing document: ', error));
+
         swal('Completed!', 'Email verification sent!', 'success');
         firebase.auth().currentUser.sendEmailVerification();
       })
