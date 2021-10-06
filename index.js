@@ -3,9 +3,11 @@ import { submissionApi } from './api/submission-api.js';
 import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
 import { Login } from './components/login.js';
-import { SubmissionItem } from './components/submission/submisstion-item.js';
+import { SubmissionItem } from './components/submission/submission-item.js';
+import { SubmissionList } from './components/submission/submission-list.js';
 import { SubmitForm } from './components/submit-form.js';
 import { createSubmission } from './submission/create-submission.js';
+import { getAllSubmission } from './submission/get-all-submission.js';
 import { getSubmission } from './submission/get-submission.js';
 import { getUserInfo } from './user/get-user-info.js';
 import { updateUserById } from './user/update-user-data.js';
@@ -42,28 +44,34 @@ firebase.auth().onAuthStateChanged(function (user) {
       $container.appendChild($div);
     })();
 
-    (function show_some_submission() {
-      const $ul = document.createElement('ul');
-      const $div = document.createElement('div');
-      const $h4 = document.createElement('h4');
-      $h4.textContent = 'Some submission here:';
-      $container.appendChild($div);
-      $div.appendChild($h4);
-      $div.appendChild($ul);
+    getAllSubmission((data) => {
+      const $submissionList = new SubmissionList('Submissions here:', data);
+      console.log([data]);
+      $container.appendChild($submissionList.$container);
+    });
 
-      getSubmission('pE31etfX1uDDvi9iagMe', (data) => {
-        $ul.appendChild(new SubmissionItem(data).$container);
-      });
-      getSubmission('pXLYEKCu4HWV2tKXydXC', (data) => {
-        $ul.appendChild(new SubmissionItem(data).$container);
-      });
-      getSubmission('hpkIAieaXWGB0O7ydFwD', (data) => {
-        $ul.appendChild(new SubmissionItem(data).$container);
-      });
-      getSubmission('uD6pVH2PvqbXBvjSDAkR', (data) => {
-        $ul.appendChild(new SubmissionItem(data).$container);
-      });
-    })();
+    // (function show_some_submission() {
+    //   const $ul = document.createElement('ul');
+    //   const $div = document.createElement('div');
+    //   const $h4 = document.createElement('h4');
+    //   $h4.textContent = 'Some submission here:';
+    //   $container.appendChild($div);
+    //   $div.appendChild($h4);
+    //   $div.appendChild($ul);
+
+    //   getSubmission('pE31etfX1uDDvi9iagMe', (data) => {
+    //     $ul.appendChild(new SubmissionItem(data).$container);
+    //   });
+    //   getSubmission('pXLYEKCu4HWV2tKXydXC', (data) => {
+    //     $ul.appendChild(new SubmissionItem(data).$container);
+    //   });
+    //   getSubmission('hpkIAieaXWGB0O7ydFwD', (data) => {
+    //     $ul.appendChild(new SubmissionItem(data).$container);
+    //   });
+    //   getSubmission('uD6pVH2PvqbXBvjSDAkR', (data) => {
+    //     $ul.appendChild(new SubmissionItem(data).$container);
+    //   });
+    // })();
   } else {
     const homePage = new HomePage();
     setScreen(homePage.$container);
