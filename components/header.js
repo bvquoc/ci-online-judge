@@ -36,7 +36,6 @@ class Header {
   }
 
   handleBtnLogin = () => {
-    console.log('clicked login');
     const loginScreen = new Login();
     setScreen(loginScreen.$container);
   };
