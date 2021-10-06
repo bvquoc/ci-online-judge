@@ -1,4 +1,9 @@
 const db = firebase.firestore();
+
+/**
+ * create a submission for current user
+ * @param {object} data object data contains { language, code, problemId,... }
+ */
 function createSubmission(data) {
   const userId = firebase.auth().currentUser.uid;
   db.collection('submissions')

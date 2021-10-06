@@ -1,3 +1,8 @@
+/**
+ * get Submission data by submission-id
+ * @param {string} id of submission
+ * @param {function} callbackFn function with param is data of submission
+ */
 function getSubmission(id, callbackFn) {
   if (!id) return;
   if (!callbackFn) callbackFn = (data) => console.log('Submission data:', data);
