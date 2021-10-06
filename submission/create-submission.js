@@ -17,7 +17,8 @@ function createSubmission(data) {
         .get()
         .then((doc) => {
           if (doc.exists) {
-            const submissions = [...doc.data().submissions, id];
+            const submissions = { ...doc.data().submissions };
+            submissions[id] = 0;
             thisUserDb.update({ submissions });
           }
         })
