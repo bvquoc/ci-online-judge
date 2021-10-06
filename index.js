@@ -45,6 +45,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     })();
 
     getAllSubmission((data) => {
+      data = data.reverse();
       const $submissionList = new SubmissionList('Submissions here:', data);
       console.log([data]);
       $container.appendChild($submissionList.$container);
