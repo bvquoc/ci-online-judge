@@ -7,16 +7,39 @@ class SubmitForm {
   $form = document.createElement('form');
   $problemId = new InputGroup('Problem id: ');
   $code = document.createElement('textarea');
-  $languageId = new InputGroup('Language ext (.c/.cpp/.py/.pas./...)');
+  $languages = document.createElement('select');
+
   $btnSubmit = document.createElement('button');
 
   constructor() {
     this.$container.appendChild(this.$form);
     this.$form.appendChild(this.$problemId.$container);
     this.$form.appendChild(this.$code);
-    this.$form.appendChild(this.$languageId.$container);
+    this.$form.appendChild(this.$languages);
     this.$form.appendChild(this.$btnSubmit);
     this.$btnSubmit.textContent = 'Submit Code';
+
+    this.$languages.textContent = 'Choose a language:';
+    const $langC = document.createElement('option');
+    $langC.value = 'c';
+    $langC.textContent = 'C';
+    const $langCpp = document.createElement('option');
+    $langCpp.value = 'cpp';
+    $langCpp.textContent = 'C++';
+    const $langPy = document.createElement('option');
+    $langPy.value = 'py';
+    $langPy.textContent = 'Python';
+    const $langPas = document.createElement('option');
+    $langPas.value = 'pas';
+    $langPas.textContent = 'Pascal';
+    const $langJava = document.createElement('option');
+    $langJava.value = 'java';
+    $langJava.textContent = 'Java';
+    this.$languages.appendChild($langC);
+    this.$languages.appendChild($langCpp);
+    this.$languages.appendChild($langPy);
+    this.$languages.appendChild($langPas);
+    this.$languages.appendChild($langJava);
 
     this.$form.addEventListener('submit', this.handleSubmitCode);
     this.$code.textContent = `#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n\tcout << "Hello world";\n\treturn 0;\n}`;
@@ -24,7 +47,7 @@ class SubmitForm {
 
   handleSubmitCode = (e) => {
     e.preventDefault();
-    const language = this.$languageId.getValue();
+    const language = this.$languages.value;
     const code = this.$code.value;
     const problemId = this.$problemId.getValue();
 
@@ -35,7 +58,6 @@ class SubmitForm {
     console.log('submited', problemId);
     swal('Submited', 'Your code is judging...', 'success');
     this.$problemId.reset();
-    this.$languageId.reset();
     createSubmission({ language, code, problemId });
   };
 }
