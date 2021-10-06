@@ -1,12 +1,27 @@
+const db = firebase.firestore();
 function createSubmission(data) {
-  firebase
-    .firestore()
-    .collection('submissions')
+  const userId = firebase.auth().currentUser.uid;
+  db.collection('submissions')
     .add({
       ...data,
-      userId: firebase.auth().currentUser.uid,
+      userId,
       status: 'pending',
       sentAt: firebase.firestore.FieldValue.serverTimestamp(),
+    })
+    .then((tmp) => {
+      const id = tmp.id;
+      console.log('Submission was created with id', id);
+
+      const thisUserDb = db.collection('users').doc(userId);
+      thisUserDb
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            const submissions = [...doc.data().submissions, id];
+            thisUserDb.update({ submissions });
+          }
+        })
+        .catch((error) => console.log('Error getting document:', error));
     });
 }
 
