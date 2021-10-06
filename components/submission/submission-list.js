@@ -11,7 +11,6 @@ class SubmissionList {
 
     this.$title.textContent = title;
     submissionList.forEach((item) => {
-      console.log(item);
       const $li = new SubmissionItem(item).$container;
       this.$submissionList.appendChild($li);
     });
