@@ -8,7 +8,11 @@ A web client for online judge platform
 
 **Back End**: [FireBase](https://firebase.google.com/) (v8.10.0)
 
-**Judge Server**: [Themis](https://dsapblog.wordpress.com/2013/12/24/themis/)
+**Judge Server**:
+
+- [Themis](https://dsapblog.wordpress.com/2013/12/24/themis/)
+
+- [NodeJS](https://nodejs.org/en/)
 
 ## Installation
 
