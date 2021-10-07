@@ -19,3 +19,8 @@ A web client for online judge platform
 To install packages, run:
 
 `npm install` or `yarn install`
+
+## Function documentations
+
+- `submission` functions: [here]('./submission/submission.md')
+- `user` functions: [here]('./submission/user.md')
