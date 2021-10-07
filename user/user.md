@@ -4,18 +4,18 @@
 
 Thao tác trên collection 'users' firebase.
 
-#### Get user data/info
-
-Dùng để lấy dữ liệu của doc là `userId` trong collection `users`
-
-Hàm sẽ nhận vào params là `id` và 1 hàm (`callbackFn`), `callbackFn` sẽ được chạy khi lấy xong dữ liệu từ firestore.
-
 Mỗi doc của collection sẽ chứa 2 field chính là `problems` và `submissions` (có thể thêm các field khác nếu thấy hợp lí)
 
 Chi tiết:
 
 - `problems`: một object có các key là `id` của `problem` đã nộp, value tương ứng là điểm của `problem` đó
 - `submissions`: một array chứa các `submissionId` của user
+
+#### Get user data/info
+
+Dùng để lấy dữ liệu của doc là `userId` trong collection `users`
+
+Hàm sẽ nhận vào params là `id` và 1 hàm (`callbackFn`), `callbackFn` sẽ được chạy khi lấy xong dữ liệu từ firestore.
 
 ```js
 getUserInfo('user012', (data) => {
