@@ -22,5 +22,5 @@ To install packages, run:
 
 ## Function documentations
 
-- `submission` functions: [here]('./submission/submission.md')
-- `user` functions: [here]('./submission/user.md')
+- `submission` functions
+- `user` functions
