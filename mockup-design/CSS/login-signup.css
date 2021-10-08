@@ -1,0 +1,11 @@
+a {
+  text-decoration: none;
+}
+
+a.alter-login {
+  color: #020887;
+  width: 45%;
+  padding: 6px 10px;
+  background-color: #a9dbb8;
+  border-radius: 10px;
+}
