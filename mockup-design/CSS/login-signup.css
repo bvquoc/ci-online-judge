@@ -9,3 +9,16 @@ a.alter-login {
   background-color: #a9dbb8;
   border-radius: 10px;
 }
+
+.invalid-feedback {
+  margin-top: 0;
+}
+
+#pw-match-err {
+  color: #dc3545;
+  font-size: 0.875em;
+}
+
+.invalid-field {
+  border-color: red !important;
+}
