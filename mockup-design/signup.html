@@ -28,43 +28,68 @@
         vh-100
       "
     >
-      <form style="min-width: 380px; max-width: 480px">
+      <form
+        style="min-width: 380px; max-width: 480px"
+        class="needs-validation"
+        novalidate
+      >
         <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
-        <label for="emailAddress" class="visually-hidden">Email Address</label>
-        <input
-          type="email"
-          id="emailAddress"
-          class="form-control mb-3"
-          placeholder="Email Address"
-          required
-          autofocus
-        />
-        <label for="emailAddress" class="visually-hidden">User Name</label>
-        <input
-          type="text"
-          id="userName"
-          class="form-control mb-3"
-          placeholder="Display Name"
-          autofocus
-        />
-        <label for="password" class="visually-hidden">Password</label>
-        <input
-          type="password"
-          id="password"
-          class="form-control mb-2"
-          placeholder="Password"
-          required
-          autofocus
-        />
-        <label for="password" class="visually-hidden">Confirm Password</label>
-        <input
-          type="password"
-          id="confirm-password"
-          class="form-control mb-2"
-          placeholder="Confirm Password"
-          required
-          autofocus
-        />
+
+        <div>
+          <label for="emailAddress" class="visually-hidden"
+            >Email Address</label
+          >
+          <input
+            type="email"
+            id="emailAddress"
+            class="form-control mt-2"
+            placeholder="Email Address"
+            required
+            autofocus
+          />
+          <div class="invalid-feedback">Invalid email address</div>
+        </div>
+
+        <div>
+          <label for="userName" class="visually-hidden">User Name</label>
+          <input
+            type="text"
+            id="userName"
+            class="form-control mt-2"
+            placeholder="Display Name"
+            required
+            autofocus
+          />
+          <div class="invalid-feedback">Display Name must not be empty</div>
+        </div>
+
+        <div>
+          <label for="password" class="visually-hidden">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control mt-2"
+            placeholder="Password"
+            required
+            autofocus
+          />
+          <div class="invalid-feedback">Password is required</div>
+        </div>
+
+        <div>
+          <label for="confirm-password" class="visually-hidden"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            id="confirm-password"
+            class="form-control mt-2"
+            placeholder="Confirm Password"
+            required
+            autofocus
+          />
+          <div id="pw-match-err"></div>
+        </div>
 
         <div class="mt-2">
           <button class="btn btn-lg btn-primary col-12">Sign Up</button>
@@ -82,5 +107,7 @@
         <a href="login.html">Login</a>
       </form>
     </div>
+
+    <script src="/components/signup-form.js"></script>
   </body>
 </html>
