@@ -8,6 +8,7 @@
 // import { updateUserById } from './user/update-user-data.js';
 import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
+import { Login } from './components/login.js';
 import { SubmissionList } from './components/submission/submission-list.js';
 import { SubmitForm } from './components/submit-form.js';
 import { getAllSubmission } from './submission/get-all-submission.js';
@@ -73,8 +74,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     //   });
     // })();
   } else {
-    const homePage = new HomePage();
-    setScreen(homePage.$container);
+    const $loginPage = new Login();
+    setScreen($loginPage.$container);
   }
 });
 

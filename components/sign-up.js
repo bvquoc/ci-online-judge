@@ -3,72 +3,47 @@ import { Login } from './login.js';
 import { setScreen } from '../index.js';
 
 class SignUp {
-  $container = document.createElement('div');
+  $container = document.querySelector('template.signup-page').content.firstElementChild.cloneNode(true);
 
-  $form = document.createElement('form');
-  $txtTitle = document.createElement('h3');
-  $inputGroupEmail = new InputGroup('Email', 'email');
-  $inputGroupDisplayName = new InputGroup('Username');
-  $inputGroupPassword = new InputGroup('Password', 'password');
-  $inputGroupConfirmPassword = new InputGroup('Confirm Password', 'password');
-
-  $actions = document.createElement('div');
-  $btnSignUp = document.createElement('button');
-  $btnGoToLogin = document.createElement('button');
+  $form = this.$container.querySelector('form');
+  $displayName = this.$container.querySelector('#userName');
+  $email = this.$container.querySelector('#emailAddress');
+  $password = this.$container.querySelector('#password');
+  $confirmPassword = this.$container.querySelector('#confirm-password');
+  $pwMatchError = this.$container.querySelector('#pw-match-err');
+  $gotoLogin = this.$container.querySelector('.goto-login');
 
   constructor() {
-    this.$txtTitle.innerHTML = 'SignUp';
+    this.$form.addEventListener(
+      'submit',
+      (e) => {
+        e.preventDefault();
+        if (!this.$form.checkValidity()) e.stopPropagation();
+        this.$form.classList.add('was-validated');
+        if (this.$password.value !== this.$confirmPassword.value) {
+          e.stopPropagation();
+          this.$pwMatchError.innerHTML = 'Confirm password did not match';
+          this.$password.classList.add('invalid-field');
+          this.$confirmPassword.classList.add('invalid-field');
+        } else {
+          this.$pwMatchError.innerHTML = '';
+          this.$password.classList.remove('invalid-field');
+          this.$confirmPassword.classList.remove('invalid-field');
 
-    this.$btnSignUp.innerHTML = 'SignUp';
-    this.$btnSignUp.type = 'submit';
+          const email = this.$email.value;
+          const passwd = this.$password.value;
+          const displayName = this.$displayName.value;
 
-    this.$btnGoToLogin.innerHTML = 'Go to Login';
-    this.$btnGoToLogin.type = 'button';
-    this.$btnGoToLogin.addEventListener('click', this.handleGoToLogin);
+          this.handleSignup(email, passwd, displayName);
+        }
+      },
+      false,
+    );
 
-    this.$form.addEventListener('submit', this.handleSubmit);
-
-    this.$container.appendChild(this.$form);
-
-    this.$form.appendChild(this.$txtTitle);
-    this.$form.appendChild(this.$inputGroupEmail.$container);
-    this.$form.appendChild(this.$inputGroupDisplayName.$container);
-    this.$form.appendChild(this.$inputGroupPassword.$container);
-    this.$form.appendChild(this.$inputGroupConfirmPassword.$container);
-    this.$form.appendChild(this.$actions);
-
-    this.$actions.appendChild(this.$btnSignUp);
-    this.$actions.appendChild(this.$btnGoToLogin);
+    this.$gotoLogin.onclick = this.handleGoToLogin;
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const email = this.$inputGroupEmail.getValue();
-    const displayName = this.$inputGroupDisplayName.getValue().trim();
-    const password = this.$inputGroupPassword.getValue();
-    const confirmPassword = this.$inputGroupConfirmPassword.getValue();
-
-    let check = true;
-
-    if (!email) {
-      this.$inputGroupEmail.setErrorMessage('Email cannot be empty!');
-      check = false;
-    }
-    if (!displayName) {
-      this.$inputGroupDisplayName.setErrorMessage('Display name cannot be empty!');
-      check = false;
-    }
-    if (password !== confirmPassword) {
-      this.$inputGroupConfirmPassword.setErrorMessage('Please confirm your password!');
-      check = false;
-    }
-    if (!check) return;
-
-    this.$inputGroupEmail.reset();
-    this.$inputGroupDisplayName.reset();
-    this.$inputGroupPassword.reset();
-    this.$inputGroupConfirmPassword.reset();
-
+  handleSignup = (email, password, displayName) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -89,12 +64,12 @@ class SignUp {
           .then(() => console.log('Document successfully written!'))
           .catch((error) => console.error('Error writing document: ', error));
 
-        swal('Completed!', 'Email verification sent!', 'success');
+        swal('Completed!', 'Email verification sent.', 'success');
         firebase.auth().currentUser.sendEmailVerification();
       })
       .catch((error) => {
         console.log('Error code:', error.code);
-        console.log('Error msg:', error.message);
+        swal('Error!', error.message, 'error');
       });
   };
 
