@@ -28,28 +28,31 @@ firebase.auth().onAuthStateChanged(function (user) {
     const uid = user.uid;
     console.log(uid);
 
-    const $container = document.createElement('div');
-    const $hello = document.createElement('h3');
-//     $hello.textContent = `Hello ${username} ${email}`;
-    $container.appendChild(new Header(username).$container);
-    $container.appendChild($hello);
-    setScreen($container);
+    const $home = new HomePage();
+    setScreen($home.$container);
 
-    (function show_submit_form() {
-      // submit form
-      const $div = document.createElement('div');
-      const $h4 = document.createElement('h4');
-      $h4.textContent = 'Submit form here:';
-      $div.appendChild($h4);
-      $div.appendChild(new SubmitForm().$container);
-      $container.appendChild($div);
-    })();
+    //     const $container = document.createElement('div');
+    //     const $hello = document.createElement('h3');
+    // //     $hello.textContent = `Hello ${username} ${email}`;
+    //     $container.appendChild(new Header(username).$container);
+    //     $container.appendChild($hello);
+    //     setScreen($container);
 
-    getAllSubmission((data) => {
-      data = data.reverse();
-      const $submissionList = new SubmissionList('Submissions here:', data);
-      $container.appendChild($submissionList.$container);
-    });
+    //     (function show_submit_form() {
+    //       // submit form
+    //       const $div = document.createElement('div');
+    //       const $h4 = document.createElement('h4');
+    //       $h4.textContent = 'Submit form here:';
+    //       $div.appendChild($h4);
+    //       $div.appendChild(new SubmitForm().$container);
+    //       $container.appendChild($div);
+    //     })();
+
+    //     getAllSubmission((data) => {
+    //       data = data.reverse();
+    //       const $submissionList = new SubmissionList('Submissions here:', data);
+    //       $container.appendChild($submissionList.$container);
+    //     });
 
     // (function show_some_submission() {
     //   const $ul = document.createElement('ul');
