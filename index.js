@@ -30,8 +30,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 
     const $container = document.createElement('div');
     const $hello = document.createElement('h3');
-    $hello.textContent = `Hello ${username} ${email}`;
-    $container.appendChild(new Header().$container);
+//     $hello.textContent = `Hello ${username} ${email}`;
+    $container.appendChild(new Header(username).$container);
     $container.appendChild($hello);
     setScreen($container);
 
