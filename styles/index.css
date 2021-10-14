@@ -19,6 +19,9 @@ body {
   background-color: #fff;
 }
 
+a {
+  cursor: pointer;
+}
 .nav img {
   margin-bottom: 20px;
   width: 75px;
