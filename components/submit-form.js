@@ -1,11 +1,10 @@
-import { InputGroup } from './shared/input-group.js';
 import { createSubmission } from '../submission/create-submission.js';
 
 class SubmitForm {
   $container = document.createElement('div');
 
   $form = document.createElement('form');
-  $problemId = new InputGroup('Problem id: ');
+  $problemId = document.createElement('div'); //new InputGroup('Problem id: ');
   $code = document.createElement('textarea');
   $languages = document.createElement('select');
 
