@@ -14,7 +14,7 @@ class Header {
   // this.$btnLogout.innerHTML = 'Logout';
   // this.$btnLogout.type = 'submit';
   //
-  constructor(username) {
+  constructor() {
     this.$container.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'px-4', 'header');
 
     this.$btnLogin.textContent = 'Login';
@@ -28,8 +28,8 @@ class Header {
 
     this.$container.appendChild(this.$title);
     const $div = document.createElement('div');
-   if (firebase.auth().currentUser) {
-      this.$title.textContent = `Welcome ${username}`;
+    if (firebase.auth().currentUser) {
+      this.$title.textContent = `Welcome ${firebase.auth().currentUser.displayName}`;
       // $div.appendChild(this.$btnLogout);
     } else {
       this.$title.textContent = 'Home Page';
