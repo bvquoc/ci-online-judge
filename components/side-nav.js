@@ -19,6 +19,7 @@ class SideNav {
 
     this.$img.src = '../mockup-design/Images/Logo.PNG';
     // this.$img.classList.add('img-fluid', 'w-100');
+    this.$logout.setOnlick(() => firebase.auth().signOut());
   }
 }
 export { SideNav };

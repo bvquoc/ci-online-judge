@@ -21,15 +21,15 @@ function setScreen($container) {
 }
 
 firebase.auth().onAuthStateChanged(function (user) {
+  const $home = new HomePage();
+  setScreen($home.$container);
+
   if (user) {
-    // User is signed in.
+    // User is logged in.
     const username = user.displayName;
     const email = user.email;
     const uid = user.uid;
     console.log(uid);
-
-    const $home = new HomePage();
-    setScreen($home.$container);
 
     //     const $container = document.createElement('div');
     //     const $hello = document.createElement('h3');
@@ -77,8 +77,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     //   });
     // })();
   } else {
-    const $loginPage = new Login();
-    setScreen($loginPage.$container);
+    // const $loginPage = new Login();
+    // setScreen($loginPage.$container);
   }
 });
 
