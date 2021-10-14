@@ -41,7 +41,7 @@ class Login {
       })
       .catch((error) => {
         console.log('Error code:', error.code);
-        console.log('Error msg:', error.message);
+        swal('Error!', error.message, 'error');
       });
   };
 
