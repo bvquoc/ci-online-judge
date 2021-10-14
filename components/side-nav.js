@@ -17,7 +17,7 @@ class SideNav {
     this.$container.appendChild(this.$logout.$container);
     this.$container.classList.add('w-10', 'nav');
 
-    this.$img.src = '../mockup-design/Images/Logo.PNG';
+    this.$img.src = '../img/Logo.PNG';
     // this.$img.classList.add('img-fluid', 'w-100');
     this.$logout.setOnlick(() => firebase.auth().signOut());
   }

@@ -15,11 +15,11 @@ class ChooseLanguage {
     />
     Pascal</a
     >
-    <a href=""><img src="../mockup-design/Images/python.png" alt="" />Python</a>
-    <a href=""><img src="../mockup-design/Images/c.png" alt="" /> C/C++</a>
+    <a href=""><img src="../img/python.png" alt="" />Python</a>
+    <a href=""><img src="../img/c.png" alt="" /> C/C++</a>
     <a href=""
         ><img
-        src="../mockup-design/Images/javascript.png"
+        src="../img/javascript.png"
         alt=""
         class="coming-soon"
         />JavaScript
