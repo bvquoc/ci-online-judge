@@ -9,6 +9,7 @@
 import { Header } from './components/header.js';
 import { HomePage } from './components/home-page.js';
 import { Login } from './components/login.js';
+import { ProblemPage } from './components/problem/problem-page.js';
 import { SubmissionList } from './components/submission/submission-list.js';
 import { SubmitForm } from './components/submit-form.js';
 import { getAllSubmission } from './submission/get-all-submission.js';
@@ -21,9 +22,12 @@ function setScreen($container) {
 }
 
 firebase.auth().onAuthStateChanged(function (user) {
-  const $home = new HomePage();
-  setScreen($home.$container);
-
+  // const $home = new HomePage();
+  // setScreen($home.$container);
+  const $tmp = new ProblemPage(
+    '# Hello World\n\n### Description\n\nBài tập này giúp bạn làm quen với hệ thống của chúng tôi. Và cũng là bài tập thể hiện quyết tâm học lập trình của bạn!\n\nHãy viết chương trình in ra dòng chữ "Hello World!"\n\n### Input\n\n```\n\n```\n\n### Output\n\n```\nHello World!\n```\n\n### Example\n\n#### C++\n\n```cpp\n#include <iostream> using namespace std;\nint main() {\n  cout << "Hello World!";\n  return 0;\n}\n```\n\n#### C\n\n```c\n#include <stdio.h> int main() {\n  printf(\'Hello World!\');\n  return 0;\n}\n```\n\n#### Pascal\n\n```pascal\nprogram plus;\nvar a, b: longint;\nbegin\n  writeln("Hello World");\nend.\n```\n',
+  );
+  setScreen($tmp.$container);
   if (user) {
     // User is logged in.
     const username = user.displayName;
