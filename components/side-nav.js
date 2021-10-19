@@ -22,7 +22,7 @@ class SideNav {
     this.$container.appendChild(this.$logout.$container);
     this.$container.classList.add('w-10', 'nav');
 
-    this.$img.src = '../img/logo.png';
+    this.$img.src = './img/logo.png';
     this.$img.onclick = () => {
       const $home = new HomePage();
       setScreen($home.$container);
