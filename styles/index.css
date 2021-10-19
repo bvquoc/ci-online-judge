@@ -228,3 +228,14 @@ textarea.code-editor {
   background-color: rgba(185, 189, 255, 0.5);
   min-height: 250px;
 }
+
+.top-score-user {
+  border: 0.5px solid rgba(104, 104, 104, 0.25);
+  color: #020887;
+  font-weight: 600;
+  background-color: #f8fdf7;
+}
+
+.top-score-total {
+  color: rgb(0, 145, 0);
+}
