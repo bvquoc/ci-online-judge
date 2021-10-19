@@ -18,8 +18,9 @@ class ProblemPage {
   $txtInput = document.createElement('textarea');
   $btnSubmit = document.createElement('button');
 
-  constructor(content = '') {
+  constructor(headerTxt = 'Problem', content = '') {
     this.$content = new ProblemContent(content);
+    this.$header.setHeader(headerTxt);
 
     this.$main.appendChild(this.$header.$container);
     this.$main.appendChild(this.$contentWrapper);
