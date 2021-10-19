@@ -13,7 +13,7 @@ class RankingPage {
   $txtTitle = document.createElement('h2');
   $topScoreContainer = new TopScore();
 
-  constructor() {
+  constructor(headerTxt) {
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
 
@@ -27,6 +27,7 @@ class RankingPage {
 
     this.$contentWrapper.appendChild(this.$topScoreContainer.$container);
     this.$topScoreContainer.getData();
+    if (headerTxt) this.$header.setHeader(headerTxt);
   }
 }
 

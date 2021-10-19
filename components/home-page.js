@@ -21,7 +21,7 @@ class HomePage {
 
   $infoContainer = document.getElementById('info-container').content.firstElementChild.cloneNode(true);
 
-  constructor() {
+  constructor(headerTxt) {
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
     this.$main.appendChild(this.$header.$container);
@@ -44,6 +44,8 @@ class HomePage {
     this.$exercisesList.classList.add('exercises-list');
 
     this.$exercisesList.appendChild(this.$exerciseItemPreview.$container);
+
+    if (headerTxt) this.$header.setHeader(headerTxt);
   }
 }
 export { HomePage };

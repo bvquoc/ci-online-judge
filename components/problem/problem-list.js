@@ -14,7 +14,7 @@ class ProblemList {
 
   $problemRows = new ProblemRow();
 
-  constructor() {
+  constructor(headerTxt) {
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
 
@@ -37,6 +37,7 @@ class ProblemList {
     </tr>`;
 
     this.$problemRows.getData();
+    if (headerTxt) this.$header.setHeader(headerTxt);
   }
 }
 

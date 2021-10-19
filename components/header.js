@@ -9,7 +9,7 @@ class Header {
   $btnLogin = document.createElement('button');
   $btnSignUp = document.createElement('button');
 
-  constructor() {
+  constructor(headerTxt) {
     this.$container.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'px-4', 'header');
 
     this.$btnLogin.textContent = 'Login';
@@ -22,7 +22,8 @@ class Header {
     this.$container.appendChild(this.$title);
     const $div = document.createElement('div');
     if (firebase.auth().currentUser) {
-      this.$title.textContent = `Welcome ${firebase.auth().currentUser.displayName}`;
+      if (!headerTxt) this.$title.textContent = `Welcome ${firebase.auth().currentUser.displayName || ''}`;
+      else this.$title.textContent = headerTxt;
       // $div.appendChild(this.$btnLogout);
     } else {
       this.$title.textContent = 'Home Page';
@@ -40,6 +41,10 @@ class Header {
   handleBtnSignUp = () => {
     const signUpScreen = new SignUp();
     setScreen(signUpScreen.$container);
+  };
+
+  setHeader = (text) => {
+    this.$title.textContent = text;
   };
 }
 export { Header };

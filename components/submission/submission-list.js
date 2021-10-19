@@ -14,7 +14,7 @@ class SubmissionList {
 
   $submissionRows = new SubmissionRow();
 
-  constructor() {
+  constructor(headerTxt) {
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
 
@@ -37,6 +37,7 @@ class SubmissionList {
   </tr>`;
 
     this.$submissionRows.getData();
+    if (headerTxt) this.$header.setHeader(headerTxt);
   }
 }
 
