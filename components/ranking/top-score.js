@@ -34,7 +34,7 @@ class TopScore {
             'px-4',
           );
           user.innerHTML = `
-            <div>${item[0]}</div>
+            <div><i class="fas fa-medal me-3 text-primary"></i> ${item[0]}</div>
             <div class='top-score-total'>${item[1]}</div>
             `;
           this.$container.appendChild(user);
