@@ -28,8 +28,10 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 export { setScreen };
 
-// const $tmp = new SubmissionList();
-// '# Hello World\n\n### Description\n\nBài tập này giúp bạn làm quen với hệ thống của chúng tôi. Và cũng là bài tập thể hiện quyết tâm học lập trình của bạn!\n\nHãy viết chương trình in ra dòng chữ "Hello World!"\n\n### Input\n\n```\n\n```\n\n### Output\n\n```\nHello World!\n```\n\n### Example\n\n#### C++\n\n```cpp\n#include <iostream> using namespace std;\nint main() {\n  cout << "Hello World!";\n  return 0;\n}\n```\n\n#### C\n\n```c\n#include <stdio.h> int main() {\n  printf(\'Hello World!\');\n  return 0;\n}\n```\n\n#### Pascal\n\n```pascal\nprogram plus;\nvar a, b: longint;\nbegin\n  writeln("Hello World");\nend.\n```\n',
+// const $tmp = new ProblemPage(
+//   'id',
+//   '# Hello World\n\n### Description\n\nBài tập này giúp bạn làm quen với hệ thống của chúng tôi. Và cũng là bài tập thể hiện quyết tâm học lập trình của bạn!\n\nHãy viết chương trình in ra dòng chữ "Hello World!"\n\n### Input\n\n```\n\n```\n\n### Output\n\n```\nHello World!\n```\n\n### Example\n\n#### C++\n\n```cpp\n#include <iostream> using namespace std;\nint main() {\n  cout << "Hello World!";\n  return 0;\n}\n```\n\n#### C\n\n```c\n#include <stdio.h> int main() {\n  printf(\'Hello World!\');\n  return 0;\n}\n```\n\n#### Pascal\n\n```pascal\nprogram plus;\nbegin\n  writeln("Hello World");\nend.\n```\n',
+// );
 // setScreen($tmp.$container);
 
 //     const $container = document.createElement('div');

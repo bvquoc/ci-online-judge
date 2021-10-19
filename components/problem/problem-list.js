@@ -12,9 +12,8 @@ class ProblemList {
   $table = document.createElement('table');
   $thead = document.createElement('thead');
 
-  $problemRows = new ProblemRow();
-
   constructor(headerTxt) {
+    if (headerTxt) this.$header.setHeader(headerTxt);
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
 
@@ -27,7 +26,6 @@ class ProblemList {
 
     this.$table.classList.add('table', 'table-success', 'table-striped');
     this.$table.appendChild(this.$thead);
-    this.$table.appendChild(this.$problemRows.$container);
     this.$thead.innerHTML = `
     <tr>
         <th scope="col">ID</th>
@@ -36,9 +34,22 @@ class ProblemList {
         <th scope="col">Difficulty Level</th>
     </tr>`;
 
-    this.$problemRows.getData();
-    if (headerTxt) this.$header.setHeader(headerTxt);
+    this.getData();
   }
+
+  getData = () => {
+    firebase
+      .firestore()
+      .collection('problems')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data().desc}`);
+          const $problemRow = new ProblemRow(doc.data());
+          this.$table.appendChild($problemRow.$container);
+        });
+      });
+  };
 }
 
 export { ProblemList };

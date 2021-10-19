@@ -5,33 +5,22 @@ class ProblemRow {
   id;
   data;
   $container = document.createElement('tbody');
-  constructor() {
+  constructor(data) {
     this.$container.style.cursor = 'pointer';
     this.$container.onclick = () => {
-      const $problemPage = new ProblemPage(`Problem ID: ${this.id}`, this.data.desc);
+      const $problemPage = new ProblemPage(`Problem ID: ${this.id}`, data.desc);
       setScreen($problemPage.$container);
     };
-  }
 
-  getData = () => {
-    firebase
-      .firestore()
-      .collection('problems')
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data().desc}`);
-          const newRow = document.createElement('tr');
-          this.id = doc.id;
-          this.data = doc.data();
-          newRow.innerHTML = `<th scope="row">${doc.id}</th>
-          <td>${doc.data().title}</td>
-          <td>${doc.data().language}</td>
-          <td>${doc.data().difficulty}</td>`;
-          this.$container.appendChild(newRow);
-        });
-      });
-  };
+    const newRow = document.createElement('tr');
+    this.id = data?.id;
+    this.data = data;
+    newRow.innerHTML = `<th scope="row">${data?.id}</th>
+          <td>${data?.title}</td>
+          <td>${data?.language}</td>
+          <td>${data?.difficulty}</td>`;
+    this.$container.appendChild(newRow);
+  }
 }
 
 export { ProblemRow };
