@@ -8,7 +8,7 @@ class ProblemRow {
   constructor(data) {
     this.$container.style.cursor = 'pointer';
     this.$container.onclick = () => {
-      const $problemPage = new ProblemPage(`Problem ID: ${this.id}`, data.desc);
+      const $problemPage = new ProblemPage(this.id, data.desc);
       setScreen($problemPage.$container);
     };
 

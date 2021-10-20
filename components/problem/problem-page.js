@@ -4,6 +4,8 @@ import { ProblemContent } from './content.js';
 import { ScoreDisplay } from './score-display.js';
 
 class ProblemPage {
+  id;
+
   $container = document.createElement('div');
   $nav = new SideNav();
   $main = document.createElement('div');
@@ -18,9 +20,10 @@ class ProblemPage {
   $txtInput = document.createElement('textarea');
   $btnSubmit = document.createElement('button');
 
-  constructor(headerTxt = 'Problem', content = '') {
+  constructor(id = 'Problem', content = '') {
     this.$content = new ProblemContent(content);
-    this.$header.setHeader(headerTxt);
+    this.$header.setHeader(id);
+    this.id = id;
 
     this.$main.appendChild(this.$header.$container);
     this.$main.appendChild(this.$contentWrapper);
@@ -46,7 +49,17 @@ class ProblemPage {
 
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
+
+    this.$btnSubmit.onclick = this.handleSubmitCode;
   }
+
+  handleSubmitCode = () => {
+    const code = this.$txtInput.value;
+    if (!code) return;
+
+    const data = { problemId: this.id, code, language: '' };
+    console.log(data);
+  };
 }
 
 export { ProblemPage };
