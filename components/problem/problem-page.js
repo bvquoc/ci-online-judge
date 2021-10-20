@@ -16,7 +16,7 @@ class ProblemPage {
   $content;
 
   $rightContainer = document.createElement('div');
-  $scoreDisplay = new ScoreDisplay('100', 'C/C++, Pascal, Python, Java');
+  $scoreDisplay = new ScoreDisplay('100', 'C/C++, Pascal, Java');
   $txtInput = document.createElement('textarea');
   $btnSubmit = document.createElement('button');
 
