@@ -1,4 +1,5 @@
 import { Header } from '../header.js';
+import { Modal } from '../modal.js';
 import { SideNav } from '../side-nav.js';
 import { ProblemContent } from './content.js';
 import { ScoreDisplay } from './score-display.js';
@@ -12,6 +13,8 @@ class ProblemPage {
 
   $header = new Header();
   $contentWrapper = document.createElement('div');
+
+  $modal = new Modal();
 
   $content;
 
@@ -42,11 +45,14 @@ class ProblemPage {
 
     this.$btnSubmit.innerHTML = 'Submit';
     this.$btnSubmit.classList.add('btn', 'btn-dark', 'mx-4', 'my-3');
+    this.$btnSubmit.setAttribute('data-toggle', 'modal');
+    this.$btnSubmit.setAttribute('data-target', '#myModal');
 
     this.$main.style.marginLeft = '80px';
     this.$main.classList.add('p-4');
     this.$content.$container.classList.add('p-3', 'w-50');
 
+    this.$container.appendChild(this.$modal.$container);
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
 
