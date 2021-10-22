@@ -42,6 +42,11 @@ class ProblemPage {
 
     this.$txtInput.classList.add('mx-4', 'rounded', 'form-control', 'mw-100', 'code-editor');
     this.$txtInput.placeholder = 'Write your code here...';
+    // const codeEditor = CodeMirror.fromTextArea(this.$txtInput, {
+    //   lineNumbers: true,
+    //   mode: 'htmlmixed',
+    //   // theme: 'material',
+    // });
 
     this.$btnSubmit.innerHTML = 'Submit';
     this.$btnSubmit.classList.add('btn', 'btn-dark', 'mx-4', 'my-3');
@@ -56,11 +61,10 @@ class ProblemPage {
     this.$container.appendChild(this.$nav.$container);
     this.$container.appendChild(this.$main);
 
-    this.$btnSubmit.onclick = this.handleSubmitCode;
+    this.$btnSubmit.onclick = this.handleSubmitCode; // () => this.handleSubmitCode(codeEditor.getValue());
   }
 
-  handleSubmitCode = () => {
-    const code = this.$txtInput.value;
+  handleSubmitCode = (code) => {
     if (!code) return;
 
     const data = { problemId: this.id, code, language: '' };

@@ -9,10 +9,10 @@ class SideNav {
   $container = document.createElement('div');
   $img = document.createElement('img');
 
-  $exercises = new NavLink(`<i class="fas fa-dumbbell"></i>`);
-  $submissions = new NavLink(`<i class="fas fa-file-medical-alt"></i>`);
-  $ranking = new NavLink(`<i class="fas fa-trophy"></i>`);
-  $logout = new NavLink(`<i class="fas fa-sign-out-alt"></i>`);
+  $exercises = new NavLink(`<i class="fas fa-dumbbell"></i>`, 'Problems');
+  $submissions = new NavLink(`<i class="fas fa-file-medical-alt"></i>`, 'Submissions');
+  $ranking = new NavLink(`<i class="fas fa-trophy"></i>`, 'Ranking');
+  $logout = new NavLink(`<i class="fas fa-sign-out-alt"></i>`, 'Logout');
 
   constructor() {
     this.$container.appendChild(this.$img);

@@ -1,7 +1,8 @@
 class NavLink {
   $container = document.createElement('a');
-  constructor(icon) {
+  constructor(icon, title) {
     this.$container.innerHTML = icon;
+    this.$container.title = title;
   }
 
   setOnlick(listener) {
