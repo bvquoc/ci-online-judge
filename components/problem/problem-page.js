@@ -3,6 +3,7 @@ import { Modal } from '../modal.js';
 import { SideNav } from '../side-nav.js';
 import { ProblemContent } from './content.js';
 import { ScoreDisplay } from './score-display.js';
+import { SelectLanguage } from './select-language.js';
 
 class ProblemPage {
   id;
@@ -22,6 +23,7 @@ class ProblemPage {
   $scoreDisplay = new ScoreDisplay('100', 'C/C++, Pascal, Java');
   $txtInput = document.createElement('textarea');
   $btnSubmit = document.createElement('button');
+  $selectLang = new SelectLanguage();
 
   constructor(id = 'Problem', content = '') {
     this.$content = new ProblemContent(content);
@@ -37,6 +39,7 @@ class ProblemPage {
 
     this.$rightContainer.appendChild(this.$scoreDisplay.$container);
     this.$rightContainer.appendChild(this.$txtInput);
+    this.$rightContainer.appendChild(this.$selectLang.$container);
     this.$rightContainer.appendChild(this.$btnSubmit);
     this.$rightContainer.classList.add('m-4');
 
@@ -64,10 +67,11 @@ class ProblemPage {
     this.$btnSubmit.onclick = this.handleSubmitCode; // () => this.handleSubmitCode(codeEditor.getValue());
   }
 
-  handleSubmitCode = (code) => {
+  handleSubmitCode = () => {
+    const code = this.$txtInput.value;
     if (!code) return;
 
-    const data = { problemId: this.id, code, language: '' };
+    const data = { problemId: this.id, code, language: this.$selectLang.getValue() };
     console.log(data);
   };
 }
