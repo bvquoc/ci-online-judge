@@ -6,7 +6,7 @@ class SelectLanguage {
   $langJava = document.createElement('option');
   $langPy = document.createElement('option');
   constructor() {
-    this.$container.classList.add('form-select');
+    this.$container.classList.add('form-select', 'm-4');
 
     this.$langCpp.selected = true;
     this.$langCpp.value = 'cpp';
