@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Upload</title>
+
+    <!-- <link href="style.css" type="text/css" rel="stylesheet" /> -->
+  </head>
+
+  <body>
+    <form action="" id="problem-form">
+      <div>
+        <span>Problem ID</span>
+        <input type="text" id="problem-id" />
+      </div>
+      <div>
+        <span>Problem Title</span>
+        <input type="text" id="problem-title" />
+      </div>
+      <div>
+        <span>Difficulty</span>
+        <input type="text" id="problem-difficulty" />
+      </div>
+      <div>
+        <span>Markdown</span>
+        <textarea id="problem-content" cols="200" rows="50"></textarea>
+      </div>
+      <button type="submit">Upload</button>
+    </form>
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script type="module">
+    const firebaseConfig = {
+      apiKey: 'AIzaSyAluRe0cXHbkLqSY5Jc6MZ7J1zaFhG6EW8',
+      authDomain: 'ci-onlinejudge.firebaseapp.com',
+      projectId: 'ci-onlinejudge',
+      storageBucket: 'ci-onlinejudge.appspot.com',
+      messagingSenderId: '208800042172',
+      appId: '1:208800042172:web:216326089b914e98f894b9',
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+  <script src="./index.js"></script>
+</html>
