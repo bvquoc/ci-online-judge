@@ -13,8 +13,8 @@ class SubmissionRow {
           newRow.innerHTML = `<tr>
           <th scope="col">${doc.data().displayName}</th>
           <th scope="col">${doc.data().problemId}</th>
-          <th scope="col">${doc.data().language}</th>
           <th scope="col">${doc.data().score}</th>
+          <th scope="col">${doc.data().language}</th>
           <th scope="col">${doc.data().status}</th>
         </tr>`;
           this.$container.appendChild(newRow);

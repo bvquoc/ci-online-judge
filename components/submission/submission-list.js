@@ -32,7 +32,7 @@ class SubmissionList {
     <th scope="col">User</th>
     <th scope="col">Execise Name</th>
     <th scope="col">Score</th>
-    <th scope="col">Difficulty Level</th>
+    <th scope="col">Language</th>
     <th scope="col">Status</th>
   </tr>`;
 

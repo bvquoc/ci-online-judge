@@ -17,7 +17,7 @@ class ProblemRow {
     this.data = data;
     newRow.innerHTML = `<th scope="row">${data?.id}</th>
           <td>${data?.title}</td>
-          <td>${data?.language}</td>
+          <td>${data?.language || 'C/C++, Pascal, Java, Python'}</td>
           <td>${data?.difficulty}</td>`;
     this.$container.appendChild(newRow);
   }
