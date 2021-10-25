@@ -17,8 +17,6 @@ class HomePage {
   $txtTopExercises = document.createElement('h4');
   $exercisesList = document.createElement('div');
 
-  $exerciseItemPreview = new ExerciseItemPreview();
-
   $infoContainer = document.getElementById('info-container').content.firstElementChild.cloneNode(true);
 
   constructor(headerTxt) {
@@ -43,9 +41,24 @@ class HomePage {
     this.$txtTopExercises.innerHTML = 'Top exercises';
     this.$exercisesList.classList.add('exercises-list');
 
-    this.$exercisesList.appendChild(this.$exerciseItemPreview.$container);
-
     if (headerTxt) this.$header.setHeader(headerTxt);
+
+    this.getData();
   }
+
+  getData = () => {
+    firebase
+      .firestore()
+      .collection('problems')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data().desc}`);
+
+          const $exerciseItemPreview = new ExerciseItemPreview(doc.data());
+          this.$exercisesList.appendChild($exerciseItemPreview.$container);
+        });
+      });
+  };
 }
 export { HomePage };

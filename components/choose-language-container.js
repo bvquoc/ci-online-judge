@@ -37,6 +37,9 @@ class ChooseLanguage {
     `;
 
     this.$languageList.classList.add('language-list');
+    this.$container.onclick = (e) => {
+      e.preventDefault();
+    };
   }
 }
 
