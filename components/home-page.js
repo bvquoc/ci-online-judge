@@ -2,6 +2,8 @@ import { SideNav } from './side-nav.js';
 import { Header } from './header.js';
 import { ChooseLanguage } from './choose-language-container.js';
 import { ExerciseItemPreview } from './exercise-item-preview.js';
+import { UserItem } from './homepage/user-item.js';
+import { SubmissionItem } from './homepage/submission-item.js';
 
 class HomePage {
   $container = document.createElement('div');
@@ -17,7 +19,11 @@ class HomePage {
   $txtTopExercises = document.createElement('h4');
   $exercisesList = document.createElement('div');
 
-  $infoContainer = document.getElementById('info-container').content.firstElementChild.cloneNode(true);
+  $infoContainer = document.createElement('div');
+  $topUserContainer = document.createElement('div');
+  $topUserText = document.createElement('h4');
+  $recentSubmissionContainer = document.createElement('div');
+  $recentSubmissionText = document.createElement('h4');
 
   constructor(headerTxt) {
     this.$container.appendChild(this.$nav.$container);
@@ -41,6 +47,18 @@ class HomePage {
     this.$txtTopExercises.innerHTML = 'Top exercises';
     this.$exercisesList.classList.add('exercises-list');
 
+    this.$infoContainer.classList.add('info-container');
+    this.$infoContainer.appendChild(this.$topUserContainer);
+    this.$infoContainer.appendChild(this.$recentSubmissionContainer);
+
+    this.$topUserContainer.classList.add('top-user-container', 'p-3');
+    this.$topUserContainer.appendChild(this.$topUserText);
+    this.$topUserText.innerHTML = 'Top Users';
+
+    this.$recentSubmissionContainer.classList.add('recent-submission-container', 'py-3');
+    this.$recentSubmissionContainer.appendChild(this.$recentSubmissionText);
+    this.$recentSubmissionText.innerHTML = 'Recent Submissions';
+
     if (headerTxt) this.$header.setHeader(headerTxt);
 
     this.getData();
@@ -57,6 +75,28 @@ class HomePage {
 
           const $exerciseItemPreview = new ExerciseItemPreview(doc.data());
           this.$exercisesList.appendChild($exerciseItemPreview.$container);
+        });
+      });
+
+    firebase
+      .firestore()
+      .collection('users')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          let $userItem = new UserItem(doc.data().displayName);
+          this.$topUserContainer.appendChild($userItem.$container);
+        });
+      });
+
+    firebase
+      .firestore()
+      .collection('submissions')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          let $submissionItem = new SubmissionItem(doc.data().displayName, doc.data().score);
+          this.$recentSubmissionContainer.appendChild($submissionItem.$container);
         });
       });
   };

@@ -15,7 +15,7 @@ class ExerciseItemPreview {
     this.$container.appendChild(this.$description);
     this.$container.appendChild(this.$btnTry);
     // this.$container.appendChild(this.$btnSave);
-    this.$container.classList.add('exercise-item-preview');
+    this.$container.classList.add('exercise-item-preview', 'mt-3');
 
     this.data = data;
     this.$txtTitle.innerHTML = data?.id || 'Title here';
