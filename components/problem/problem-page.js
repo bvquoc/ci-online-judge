@@ -1,3 +1,4 @@
+import { createSubmission } from '../../submission/create-submission.js';
 import { Header } from '../header.js';
 import { Modal } from '../modal.js';
 import { SideNav } from '../side-nav.js';
@@ -45,11 +46,6 @@ class ProblemPage {
 
     this.$txtInput.classList.add('mx-4', 'rounded', 'form-control', 'mw-100', 'code-editor');
     this.$txtInput.placeholder = 'Write your code here...';
-    // const codeEditor = CodeMirror.fromTextArea(this.$txtInput, {
-    //   lineNumbers: true,
-    //   mode: 'htmlmixed',
-    //   // theme: 'material',
-    // });
 
     this.$btnSubmit.innerHTML = 'Submit';
     this.$btnSubmit.classList.add('btn', 'btn-dark', 'mx-4', 'my-3');
@@ -72,6 +68,8 @@ class ProblemPage {
     if (!code) return;
 
     const data = { problemId: this.id, code, language: this.$selectLang.getValue() };
+
+    createSubmission(data);
     console.log(data);
   };
 }

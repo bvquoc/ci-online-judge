@@ -17,6 +17,7 @@ function createSubmission(data) {
     .then((tmp) => {
       const id = tmp.id;
       console.log('Submission was created with id', id);
+      swal('Success', `Submited ${data.problemId}`, 'success');
 
       const thisUserDb = db.collection('users').doc(userId);
       thisUserDb
@@ -27,7 +28,10 @@ function createSubmission(data) {
             thisUserDb.update({ submissions });
           }
         })
-        .catch((error) => console.log('Error getting document:', error));
+        .catch((error) => {
+          console.log('Error getting document:', error);
+          swal('Error', error.message, 'error');
+        });
     });
 }
 
