@@ -185,10 +185,12 @@ button.save-for-later {
 .recent-submission-container {
   background-color: #7ca5b8;
   width: 100%;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 20px;
+  overflow-y: auto;
 }
 
 .submission-item {
