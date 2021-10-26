@@ -49,6 +49,7 @@ class HomePage {
 
     this.$infoContainer.classList.add('info-container');
     this.$infoContainer.appendChild(this.$topUserContainer);
+    this.$infoContainer.appendChild(this.$recentSubmissionText);
     this.$infoContainer.appendChild(this.$recentSubmissionContainer);
 
     this.$topUserContainer.classList.add('top-user-container', 'p-3');
@@ -56,7 +57,7 @@ class HomePage {
     this.$topUserText.innerHTML = 'Top Users';
 
     this.$recentSubmissionContainer.classList.add('recent-submission-container', 'py-3');
-    this.$recentSubmissionContainer.appendChild(this.$recentSubmissionText);
+    this.$recentSubmissionContainer;
     this.$recentSubmissionText.innerHTML = 'Recent Submissions';
 
     if (headerTxt) this.$header.setHeader(headerTxt);
