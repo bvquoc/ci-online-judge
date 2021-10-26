@@ -78,15 +78,32 @@ class HomePage {
         });
       });
 
+    const users = [];
     firebase
       .firestore()
       .collection('users')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          let $userItem = new UserItem(doc.data().displayName);
-          this.$topUserContainer.appendChild($userItem.$container);
+          const user = doc.data();
+          let totalScore = 0;
+          for (const key in user.problems) {
+            totalScore += user.problems[key];
+          }
+          users.push({
+            displayName: user.displayName,
+            totalScore,
+          });
         });
+      })
+      .then(() => {
+        users.sort((a, b) => b.totalScore - a.totalScore);
+        console.log(users);
+        for (let i = 0; i < Math.min(users.length, 5); i++) {
+          if (!users[i].totalScore) break;
+          const $userItem = new UserItem(users[i].displayName);
+          this.$topUserContainer.appendChild($userItem.$container);
+        }
       });
 
     firebase
