@@ -36,7 +36,6 @@ class SubmissionList {
     <th scope="col">Status</th>
   </tr>`;
 
-    this.$submissionRows.getData();
     if (headerTxt) this.$header.setHeader(headerTxt);
   }
 }
