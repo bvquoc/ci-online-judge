@@ -13,6 +13,7 @@ function createSubmission(data) {
       displayName: firebase.auth().currentUser.displayName,
       status: 'pending',
       sentAt: firebase.firestore.FieldValue.serverTimestamp(),
+      score: 0,
     })
     .then((tmp) => {
       const id = tmp.id;

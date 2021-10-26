@@ -6,6 +6,7 @@ class SubmissionRow {
     firebase
       .firestore()
       .collection('submissions')
+      .orderBy('sentAt')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
