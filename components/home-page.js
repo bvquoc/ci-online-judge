@@ -109,10 +109,14 @@ class HomePage {
     firebase
       .firestore()
       .collection('submissions')
+      .orderBy('sentAt')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          let $submissionItem = new SubmissionItem(doc.data().displayName, doc.data().score);
+          let $submissionItem = new SubmissionItem(
+            `${doc.data().displayName} - ${doc.data().problemId}`,
+            doc.data().score,
+          );
           this.$recentSubmissionContainer.appendChild($submissionItem.$container);
         });
       });
