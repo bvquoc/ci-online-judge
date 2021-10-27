@@ -25,7 +25,7 @@ class SubmissionRow {
           <th scope="col">${this.LANGS[doc.data().language]}</th>
           <th scope="col">${doc.data().status}</th>
         </tr>`;
-          this.$container.appendChild(newRow);
+          this.$container.prepend(newRow);
         });
       });
   }
