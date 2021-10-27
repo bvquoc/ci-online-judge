@@ -18,12 +18,18 @@ class SubmissionRow {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const newRow = document.createElement('tr');
+          const currentSub = doc.data();
+          const d = new Date(currentSub.sentAt.seconds * 1000);
+
           newRow.innerHTML = `<tr>
-          <th scope="col">${doc.data().displayName}</th>
-          <th scope="col">${doc.data().problemId}</th>
-          <th scope="col">${doc.data().status === 'pending' ? '...' : doc.data().score}</th>
-          <th scope="col">${this.LANGS[doc.data().language]}</th>
-          <th scope="col">${doc.data().status}</th>
+          <th scope="col">${
+            d.getDay() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes()
+          }</th>
+          <th scope="col">${currentSub.displayName}</th>
+          <th scope="col">${currentSub.problemId}</th>
+          <th scope="col">${currentSub.status === 'pending' ? '...' : currentSub.score}</th>
+          <th scope="col">${this.LANGS[currentSub.language]}</th>
+          <th scope="col">${currentSub.status}</th>
         </tr>`;
           this.$container.prepend(newRow);
         });

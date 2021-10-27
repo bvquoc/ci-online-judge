@@ -29,6 +29,7 @@ class SubmissionList {
     this.$table.appendChild(this.$thead);
     this.$table.appendChild(this.$submissionRows.$container);
     this.$thead.innerHTML = `<tr>
+    <th scope="col">#</th>
     <th scope="col">User</th>
     <th scope="col">Execise Name</th>
     <th scope="col">Score</th>
