@@ -57,7 +57,7 @@ class HomePage {
     this.$topUserText.innerHTML = 'Top Users';
 
     this.$recentSubmissionContainer.classList.add('recent-submission-container', 'py-3');
-    this.$recentSubmissionContainer;
+    this.$recentSubmissionContainer.appendChild(this.$recentSubmissionText);
     this.$recentSubmissionText.innerHTML = 'Recent Submissions';
 
     if (headerTxt) this.$header.setHeader(headerTxt);
@@ -118,7 +118,7 @@ class HomePage {
             `${doc.data().displayName} - ${doc.data().problemId}`,
             doc.data().status === 'pending' ? 'pending' : doc.data().score,
           );
-          this.$recentSubmissionContainer.appendChild($submissionItem.$container);
+          this.$recentSubmissionContainer.prepend($submissionItem.$container);
         });
       });
   };
