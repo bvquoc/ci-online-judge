@@ -23,7 +23,6 @@ class SubmissionRow {
 
           newRow.innerHTML = `<tr>
           <th scope="col">${
-            // d.getDay() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes()
             `0${d.getDate()}`.slice(-2) +
             '/' +
             `0${d.getMonth() + 1}`.slice(-2) +
