@@ -19,11 +19,20 @@ class SubmissionRow {
         querySnapshot.forEach((doc) => {
           const newRow = document.createElement('tr');
           const currentSub = doc.data();
-          const d = new Date(currentSub.sentAt.seconds * 1000);
+          const d = new Date(new Date(currentSub.sentAt.seconds * 1000).toLocaleString({ timezone: 'Asia/Jakarta' }));
 
           newRow.innerHTML = `<tr>
           <th scope="col">${
-            d.getDay() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes()
+            // d.getDay() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes()
+            `0${d.getDate()}`.slice(-2) +
+            '/' +
+            `0${d.getMonth() + 1}`.slice(-2) +
+            '/' +
+            d.getFullYear() +
+            ' ' +
+            `0${d.getHours()}`.slice(-2) +
+            ':' +
+            `0${d.getMinutes()}`.slice(-2)
           }</th>
           <th scope="col">${currentSub.displayName}</th>
           <th scope="col">${currentSub.problemId}</th>
