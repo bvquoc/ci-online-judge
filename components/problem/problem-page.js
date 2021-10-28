@@ -64,8 +64,15 @@ class ProblemPage {
   }
 
   handleSubmitCode = () => {
+    if (!firebase.auth().currentUser) {
+      swal('Login please!', 'You must login to submit your code.', 'info');
+      return;
+    }
     const code = this.$txtInput.value;
-    if (!code) return;
+    if (!code) {
+      swal('Hmm...', 'Enter your code before submit', 'info');
+      return;
+    }
 
     const data = { problemId: this.title, code, language: this.$selectLang.getValue() };
 
