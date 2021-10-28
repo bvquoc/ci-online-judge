@@ -17,7 +17,14 @@ class ChooseLanguage {
     >
     <a href=""><img src="./img/c.png" alt="" />C</a>
     <a href=""><img src="./img/c++.png" alt="" />C++</a>
-    <a href=""><img src="./img/java.png" alt="" />Java</a>
+    <a href=""
+        ><img
+        src="./img/java.png"
+        alt=""
+        class="coming-soon"
+        />Java
+        <p>(Coming Soon!)</p></a
+    >
     <a href=""
         ><img
         src="./img/javascript.png"
