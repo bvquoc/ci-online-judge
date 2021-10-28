@@ -27,7 +27,7 @@ class SelectLanguage {
     this.$container.appendChild(this.$langCpp);
     this.$container.appendChild(this.$langC);
     this.$container.appendChild(this.$langPas);
-    this.$container.appendChild(this.$langJava);
+    // this.$container.appendChild(this.$langJava);
     // this.$container.appendChild(this.$langPy);
   }
 

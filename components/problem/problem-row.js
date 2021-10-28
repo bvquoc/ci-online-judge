@@ -8,7 +8,7 @@ class ProblemRow {
   constructor(data) {
     this.$container.style.cursor = 'pointer';
     this.$container.onclick = () => {
-      const $problemPage = new ProblemPage(this.id, data.desc);
+      const $problemPage = new ProblemPage(`${this.id} - ${data.title}`, data.desc);
       setScreen($problemPage.$container);
     };
 
@@ -17,7 +17,7 @@ class ProblemRow {
     this.data = data;
     newRow.innerHTML = `<th scope="row">${data?.id}</th>
           <td>${data?.title}</td>
-          <td>${data?.language || 'C/C++, Pascal, Java'}</td>
+          <td>${data?.language || 'C/C++, Pascal'}</td>
           <td>${data?.difficulty}</td>`;
     this.$container.appendChild(newRow);
   }
