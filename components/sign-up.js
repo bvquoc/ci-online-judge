@@ -67,7 +67,7 @@ class SignUp {
         firebase.auth().currentUser.sendEmailVerification();
       })
       .catch((error) => {
-        console.log('Error code:', error.code);
+        // console.log('Error code:', error.code);
         swal('Error!', error.message, 'error');
       });
   };

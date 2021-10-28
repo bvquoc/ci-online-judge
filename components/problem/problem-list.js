@@ -44,7 +44,7 @@ class ProblemList {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data().desc}`);
+          // console.log(`${doc.id} => ${doc.data().desc}`);
           const $problemRow = new ProblemRow(doc.data());
           this.$table.appendChild($problemRow.$container);
         });

@@ -77,7 +77,7 @@ class ProblemPage {
     const data = { problemId: this.title, code, language: this.$selectLang.getValue() };
 
     createSubmission(data);
-    console.log(data);
+    // console.log(data);
   };
 }
 

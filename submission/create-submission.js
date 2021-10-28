@@ -17,7 +17,7 @@ function createSubmission(data) {
     })
     .then((tmp) => {
       const id = tmp.id;
-      console.log('Submission was created with id', id);
+      // console.log('Submission was created with id', id);
       swal('Success', `Submited ${data.problemId}`, 'success');
 
       const thisUserDb = db.collection('users').doc(userId);
@@ -30,7 +30,7 @@ function createSubmission(data) {
           }
         })
         .catch((error) => {
-          console.log('Error getting document:', error);
+          // console.log('Error getting document:', error);
           swal('Error', error.message, 'error');
         });
     });

@@ -72,7 +72,7 @@ class HomePage {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data().desc}`);
+          // console.log(`${doc.id} => ${doc.data().desc}`);
 
           const $exerciseItemPreview = new ExerciseItemPreview(doc.data());
           this.$exercisesList.appendChild($exerciseItemPreview.$container);
@@ -99,7 +99,7 @@ class HomePage {
       })
       .then(() => {
         users.sort((a, b) => b.totalScore - a.totalScore);
-        console.log(users);
+        // console.log(users);
         for (let i = 0; i < Math.min(users.length, 5); i++) {
           if (!users[i].totalScore) break;
           const $userItem = new UserItem(users[i].displayName);

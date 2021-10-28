@@ -54,7 +54,7 @@ class SubmitForm {
       swal('Warning', 'Fill the input before submit', 'warning');
       return;
     }
-    console.log('submited', problemId);
+    // console.log('submited', problemId);
     swal('Submited', 'Your code is judging...', 'success');
     this.$problemId.reset();
     createSubmission({ language, code, problemId });
