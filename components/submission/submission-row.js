@@ -35,7 +35,7 @@ class SubmissionRow {
           }</th>
           <th scope="col">${currentSub.displayName}</th>
           <th scope="col">${currentSub.problemId}</th>
-          <th scope="col">${currentSub.status === 'pending' ? '...' : currentSub.score}</th>
+          <th scope="col">${currentSub.status === 'pending' ? '...' : currentSub.score}/100</th>
           <th scope="col">${this.LANGS[currentSub.language]}</th>
           <th scope="col">${currentSub.status}</th>
         </tr>`;
