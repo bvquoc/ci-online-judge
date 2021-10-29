@@ -114,7 +114,7 @@ class HomePage {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           let $submissionItem = new SubmissionItem(
-            `${doc.data().displayName} - ${doc.data().problemId}`,
+            `${doc.data().displayName} - ${doc.data().problemId}.${doc.data().language}`,
             doc.data().status === 'pending' ? 'pending' : doc.data().score,
           );
           this.$recentSubmissionContainer.prepend($submissionItem.$container);
