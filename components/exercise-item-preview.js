@@ -26,7 +26,7 @@ class ExerciseItemPreview {
     // this.$btnSave.innerHTML = 'Save for later';
 
     this.$btnTry.onclick = () => {
-      const $problemPage = new ProblemPage(this.data.id, this.data.desc);
+      const $problemPage = new ProblemPage(this.data.id, `${this.data.id} - ${this.data.title}`, this.data.desc);
       setScreen($problemPage.$container);
     };
   }
