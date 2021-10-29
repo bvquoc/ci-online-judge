@@ -37,6 +37,7 @@ To install packages, run:
 #### Các tính năng dự tính phát triển
 
 - Đăng nhập bằng Google, Github
+- Tích hợp code editor cho hệ thống
 - Cho phép user xem được source code đã nộp
 - Hiển thị chi tiết các lần nộp bài (Bài làm sai đáp án, chạy quá thời gian,...; hiện tải chỉ hỗ trợ xem đã đạt được bao nhiêu điểm ở bài đó)
 - Tính năng tạo contest, nhiều người sẽ cùng làm 1 số bài tập nhất định
