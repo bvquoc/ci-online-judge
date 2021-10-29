@@ -7,6 +7,7 @@ import { ScoreDisplay } from './score-display.js';
 import { SelectLanguage } from './select-language.js';
 
 class ProblemPage {
+  id;
   title;
 
   $container = document.createElement('div');
@@ -26,9 +27,10 @@ class ProblemPage {
   $btnSubmit = document.createElement('button');
   $selectLang = new SelectLanguage();
 
-  constructor(title = 'Problem', content = '') {
+  constructor(id, title = 'Problem', content = '') {
     this.$content = new ProblemContent(content);
     this.$header.setHeader(title);
+    this.id = id;
     this.title = title;
 
     this.$main.appendChild(this.$header.$container);
@@ -74,7 +76,7 @@ class ProblemPage {
       return;
     }
 
-    const data = { problemId: this.title, code, language: this.$selectLang.getValue() };
+    const data = { problemId: this.id, code, language: this.$selectLang.getValue() };
 
     createSubmission(data);
     // console.log(data);

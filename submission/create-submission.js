@@ -1,3 +1,5 @@
+import { SubscribeSubmission } from './subscribe-submission.js';
+
 const db = firebase.firestore();
 
 /**
@@ -19,6 +21,8 @@ function createSubmission(data) {
       const id = tmp.id;
       // console.log('Submission was created with id', id);
       swal('Success', `Submited ${data.problemId}`, 'success');
+
+      const listenSubmission = new SubscribeSubmission(id, data.problemId);
 
       const thisUserDb = db.collection('users').doc(userId);
       thisUserDb
